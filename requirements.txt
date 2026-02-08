@@ -3,3 +3,7 @@ pytesseract
 pillow
 pandas
 matplotlib
+requests
+beautifulsoup4
+seaborn
+openpyxl
