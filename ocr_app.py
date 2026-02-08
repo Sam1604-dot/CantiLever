@@ -4,7 +4,6 @@
 
 import streamlit as st
 import pytesseract
-pytesseract.pytesseract.tesseract_cmd = r"C:\Users\Samee\Tesseract-OCR\tesseract.exe"
 from PIL import Image, ImageEnhance, ImageFilter
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -12,7 +11,12 @@ from datetime import datetime
 import re
 from collections import Counter
 import io
-
+import platform
+if platform.system() == 'Windows':
+    pytesseract.pytesseract.tesseract_cmd = r"C:\Users\Samee\Tesseract-OCR\tesseract.exe"
+else:
+    # On Linux (Streamlit Cloud), tesseract is in PATH
+    pass
 # Configure page
 st.set_page_config(
     page_title="OCR Text Extractor",
@@ -295,4 +299,5 @@ st.markdown("""
 <div style='text-align: center; color: gray;'>
     <p>Built with Streamlit & Tesseract OCR</p>
 </div>
+
 """, unsafe_allow_html=True)
